@@ -15,7 +15,7 @@ import InterviewSettingsForm from "./InterviewSettingsForm";
 import JobDetailsForm from "./JobDetailsForm";
 import RequisitionForm from "./RequisitionDetailsForm";
 import DisplayCard from "./PreviewCard";
-import { useData } from './DataProvider'
+// import { useData } from './DataProvider'
 
 const CustomTab: React.FC<TabProps> = ({ children, ...props }) => {
   return (
@@ -26,14 +26,14 @@ const CustomTab: React.FC<TabProps> = ({ children, ...props }) => {
 };
 
 const HomeLayout = () => {
-  const context = useData();
+  // const context = useData();
 
-  // if (!context) {
-  //   // Handle the case where context is not available
-  //   return null;
-  // }
+  // // if (!context) {
+  // //   // Handle the case where context is not available
+  // //   return null;
+  // // }
 
-  const { state, setState } = context;
+  // const { state, setState } = context;
   const [currentTabIndex, setCurrentTabIndex] = useState(0);
   const handleTabChange = (index: number) => {
     setCurrentTabIndex(index);
@@ -58,9 +58,9 @@ const HomeLayout = () => {
         </Heading>
         <Tabs isLazy index={currentTabIndex} onChange={handleTabChange}>
           <TabList>
-            <CustomTab isDisabled={false}>Requistion Details</CustomTab>
-            <CustomTab isDisabled={state.jobDetails.jobDetails.length > 1 ? false : true}>Job Details</CustomTab>
-            <CustomTab isDisabled={state.interviewSettings.interviewDuration.length > 1 ? false : true}>Interview Settings</CustomTab>
+            <CustomTab >Requistion Details</CustomTab>
+            <CustomTab >Job Details</CustomTab>
+            <CustomTab >Interview Settings</CustomTab>
           </TabList>
           <Grid display="grid" gridTemplateColumns="3fr 2fr" gap="24px">
             <TabPanels>
