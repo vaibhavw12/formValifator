@@ -2,22 +2,13 @@ import { Button, Flex, Box } from "@chakra-ui/react";
 import React from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import { useData } from './DataProvider'
 
 import FormInput from "../../components/formComponents/FormInput";
 import FormSelect from "../../components/formComponents/FormSelect";
 import { IRequisitionDetails } from "../../interface/forms";
 import { genderOptions, urgencyOptions } from "./constants";
 
-const RequisitionDetailsForm: React.FC<{ onNextTab: () => void }> = ({ onNextTab }) => {
-  const context = useData();
-
-  if (!context) {
-    // Handle the case where context is not available
-    return null;
-  }
-
-  const { state, setState } = context;
+const RequisitionDetailsForm: React.FC = () => {
   const {
     handleChange,
     errors,
@@ -29,10 +20,10 @@ const RequisitionDetailsForm: React.FC<{ onNextTab: () => void }> = ({ onNextTab
     setFieldValue,
   } = useFormik<IRequisitionDetails>({
     initialValues: {
-      gender: state.requisitionDetails.gender,
-      noOfOpenings: state.requisitionDetails.noOfOpenings,
-      requisitionTitle: state.requisitionDetails.requisitionTitle,
-      urgency: state.requisitionDetails.urgency,
+      requisitionTitle: "",
+      noOfOpenings: 0,
+      urgency: "",
+      gender: "",
     },
     validationSchema: Yup.object().shape({
       requisitionTitle: Yup.string().required("Requisition title is required"),
@@ -46,31 +37,9 @@ const RequisitionDetailsForm: React.FC<{ onNextTab: () => void }> = ({ onNextTab
     }),
     onSubmit: (values) => {
       //  Go to Next Step
-      // console.log(values)
-      setState({
-        requisitionDetails: {
-          gender: values.gender,
-          noOfOpenings: values.noOfOpenings,
-          requisitionTitle: values.requisitionTitle,
-          urgency: values.urgency,
-        },
-        jobDetails: {
-          jobDetails: state.jobDetails.jobDetails,
-          jobLocation: state.jobDetails.jobLocation,
-          jobTitle: state.jobDetails.jobTitle,
-        },
-        interviewSettings: {
-          interviewDuration: state.interviewSettings.interviewDuration,
-          interviewLanguage: state.interviewSettings.interviewLanguage,
-          interviewMode: state.interviewSettings.interviewMode,
-        },
-      })
-      onNextTab()
     },
-    
   });
 
-  // console.log(state)
   return (
     <Box width="100%" as="form" onSubmit={handleSubmit as any}>
       <Box width="100%">
