@@ -18,7 +18,7 @@ const JobDetailsForm: React.FC<{
   //   return null;
   // }
 
-  const { state, setState } = context;
+  const { state, setState } = useData()!;
   const { handleChange, errors, touched, handleBlur, handleSubmit, values } =
     useFormik<IJobDetails>({
       initialValues: {

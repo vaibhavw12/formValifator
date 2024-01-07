@@ -13,14 +13,13 @@ import {
 } from "./constants";
 
 const InterviewDetailsForm: React.FC<{ onPrevTab: () => void }> = ({ onPrevTab }) => {
-  const context = useData();
 
   // if (!context) {
   //   // Handle the case where context is not available
   //   return null;
   // }
 
-  const { state, setState } = context;
+  const { state, setState } = useData()!;
   const {
     errors,
     touched,

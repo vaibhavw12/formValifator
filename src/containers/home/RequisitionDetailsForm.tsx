@@ -10,14 +10,13 @@ import { IRequisitionDetails } from "../../interface/forms";
 import { genderOptions, urgencyOptions } from "./constants";
 
 const RequisitionDetailsForm: React.FC<{ onNextTab: () => void }> = ({ onNextTab }) => {
-  const context = useData();
 
   // if (!context) {
   //   // Handle the case where context is not available
   //   return null;
   // }
 
-  const { state, setState } = context;
+  const { state, setState } = useData()!;
   const {
     handleChange,
     errors,
