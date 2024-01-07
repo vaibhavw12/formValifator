@@ -14,11 +14,6 @@ import {
 
 const InterviewDetailsForm: React.FC<{ onPrevTab: () => void }> = ({ onPrevTab }) => {
 
-  // if (!context) {
-  //   // Handle the case where context is not available
-  //   return null;
-  // }
-
   const { state, setState } = useData()!;
   const {
     errors,

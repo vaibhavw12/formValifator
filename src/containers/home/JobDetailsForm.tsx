@@ -11,12 +11,6 @@ const JobDetailsForm: React.FC<{
   onNextTab: () => void;
   onPrevTab: () => void;
 }> = ({ onNextTab, onPrevTab }) => {
-  const context = useData();
-
-  // if (!context) {
-  //   // Handle the case where context is not available
-  //   return null;
-  // }
 
   const { state, setState } = useData()!;
   const { handleChange, errors, touched, handleBlur, handleSubmit, values } =
